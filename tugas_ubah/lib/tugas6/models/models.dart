@@ -1,0 +1,2 @@
+var dataLogin;
+var dataPegawai;
