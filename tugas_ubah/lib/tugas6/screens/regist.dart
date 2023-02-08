@@ -265,12 +265,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 }
 
 Future<http.Response> postData(Map<String, String> data) async {
-  final response =
-      await http.post(Uri.parse("http://127.0.0.1:8000/api/accountq"),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(data));
+  final response = await http.post(
+      Uri.parse("http://steirone.my.id/laravel8/public/api/accountq"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data));
   statuscode = response.statusCode;
   print(statuscode);
   print(response.body);
@@ -278,12 +278,12 @@ Future<http.Response> postData(Map<String, String> data) async {
 }
 
 Future<http.Response> postData2(Map<String, String> data) async {
-  final response =
-      await http.post(Uri.parse("http://127.0.0.1:8000/api/pegawai"),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(data));
+  final response = await http.post(
+      Uri.parse("http://steirone.my.id/laravel8/public/api/pegawai"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data));
   statuscode = response.statusCode;
   print(statuscode);
   print(response.body);

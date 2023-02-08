@@ -55,7 +55,7 @@ class _PageKe1State extends State<PageKe1> {
                               children: [
                                 Container(
                                     width: double.infinity,
-                                    height: 165,
+                                    height: 185,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10.0),
                                       border: Border.all(

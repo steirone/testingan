@@ -5,54 +5,56 @@ import 'package:http/http.dart' as http;
 import 'models.dart';
 
 Future<http.Response> showApproval(String username) async {
-  final response = await http.get(
-      Uri.parse("http://127.0.0.1:8000/api/approval/username/${username}"));
+  final response = await http.get(Uri.parse(
+      "http://steirone.my.id/laravel8/public/api/approval/username/${username}"));
   return response;
 }
 
 Future<http.Response> showCuti(String username) async {
-  final response = await http
-      .get(Uri.parse("http://127.0.0.1:8000/api/cuti/username/${username}"));
+  final response = await http.get(Uri.parse(
+      "http://steirone.my.id/laravel8/public/api/cuti/username/${username}"));
   return response;
 }
 
 Future<http.Response> showAccount() async {
-  final response =
-      await http.get(Uri.parse("http://127.0.0.1:8000/api/accountq"));
+  final response = await http
+      .get(Uri.parse("http://steirone.my.id/laravel8/public/api/accountq"));
   return response;
 }
 
 Future<http.Response> showPegawai() async {
-  final response =
-      await http.get(Uri.parse("http://127.0.0.1:8000/api/pegawai"));
+  final response = await http
+      .get(Uri.parse("http://steirone.my.id/laravel8/public/api/pegawai"));
   return response;
 }
 
 Future<http.Response> showApprovalAll() async {
-  final response =
-      await http.get(Uri.parse("http://127.0.0.1:8000/api/approval"));
+  final response = await http
+      .get(Uri.parse("http://steirone.my.id/laravel8/public/api/approval"));
   return response;
 }
 
 Future<http.Response> showCutiAll() async {
-  final response = await http.get(Uri.parse("http://127.0.0.1:8000/api/cuti"));
+  final response = await http
+      .get(Uri.parse("http://steirone.my.id/laravel8/public/api/cuti"));
   return response;
 }
 
 Future<http.Response> postDataCuti(Map<String, String> data) async {
-  final response =
-      await http.post(Uri.parse("http://127.0.0.1:8000/api/approval"),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(data));
+  final response = await http.post(
+      Uri.parse("http://steirone.my.id/laravel8/public/api/approval"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data));
   print(response.statusCode);
   print(response.body);
   return response;
 }
 
 Future<http.Response> postDataApprovCuti(Map<String, String> data) async {
-  final response = await http.post(Uri.parse("http://127.0.0.1:8000/api/cuti"),
+  final response = await http.post(
+      Uri.parse("http://steirone.my.id/laravel8/public/api/cuti"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -64,7 +66,19 @@ Future<http.Response> postDataApprovCuti(Map<String, String> data) async {
 
 Future<http.Response> deleteDataApproval(id) async {
   final response = await http.delete(
-    Uri.parse("http://127.0.0.1:8000/api/approval/${id}"),
+    Uri.parse("http://steirone.my.id/laravel8/public/api/approval/${id}"),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+  print(response.statusCode);
+  print(response.body);
+  return response;
+}
+
+Future<http.Response> deleteDataPegawaian(id) async {
+  final response = await http.delete(
+    Uri.parse("http://steirone.my.id/laravel8/public/api/pegawai/${id}"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -76,7 +90,7 @@ Future<http.Response> deleteDataApproval(id) async {
 
 Future<http.Response> deleteDataCuties(id) async {
   final response = await http.delete(
-    Uri.parse("http://127.0.0.1:8000/api/cuti/${id}"),
+    Uri.parse("http://steirone.my.id/laravel8/public/api/cuti/${id}"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -88,7 +102,7 @@ Future<http.Response> deleteDataCuties(id) async {
 
 Future<http.Response> deleteDataAccounts(id) async {
   final response = await http.delete(
-    Uri.parse("http://127.0.0.1:8000/api/accountq/${id}"),
+    Uri.parse("http://steirone.my.id/laravel8/public/api/accountq/${id}"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -100,12 +114,12 @@ Future<http.Response> deleteDataAccounts(id) async {
 
 //################################# Akun #######################################
 Future<http.Response> updateDataAkun(int id, Map<String, String> data) async {
-  final response =
-      await http.put(Uri.parse("http://127.0.0.1:8000/api/accountq/${id}"),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(data));
+  final response = await http.put(
+      Uri.parse("http://steirone.my.id/laravel8/public/api/accountq/${id}"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data));
   statuscodeAkun = response.statusCode;
   print(statuscodeAkun);
   print(response.body);
@@ -116,7 +130,7 @@ late int statuscodeAkun;
 
 Future<http.Response> getDataAkun(id) async {
   final response = await http.get(
-    Uri.parse("http://127.0.0.1:8000/api/accountq/${id}"),
+    Uri.parse("http://steirone.my.id/laravel8/public/api/accountq/${id}"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -133,12 +147,12 @@ Future<http.Response> getDataAkun(id) async {
 //############################### Pegawai ######################################
 Future<http.Response> updateDataPegawais(
     int id, Map<String, String> data) async {
-  final response =
-      await http.put(Uri.parse("http://127.0.0.1:8000/api/pegawai/${id}"),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(data));
+  final response = await http.put(
+      Uri.parse("http://steirone.my.id/laravel8/public/api/pegawai/${id}"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data));
   statuscodePegawai = response.statusCode;
   print(statuscodePegawai);
   print(response.body);
@@ -149,7 +163,7 @@ late int statuscodePegawai;
 
 Future<http.Response> getDataPegawais(String nama) async {
   final response = await http.get(
-    Uri.parse("http://127.0.0.1:8000/api/pegawai/nama/${nama}"),
+    Uri.parse("http://steirone.my.id/laravel8/public/api/pegawai/nama/${nama}"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

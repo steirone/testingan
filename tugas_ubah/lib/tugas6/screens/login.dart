@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:tugas_ubah/tugas6/models/models.dart';
+import 'package:tugas_ubah/tugas6/models/models_future.dart';
 import 'package:tugas_ubah/tugas6/screens/regist.dart';
 
 import '../cubits/cubit/login_cubit.dart';
@@ -25,23 +26,32 @@ class _LoginPageState extends State<LoginPage> {
   final passwordinput = TextEditingController();
   late int role;
   Future<http.Response> postData(Map<String, String> data) async {
-    final response =
-        await http.post(Uri.parse("http://127.0.0.1:8000/api/accountq/login"),
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-            },
-            body: jsonEncode(data));
+    final response = await http.post(
+        Uri.parse("http://steirone.my.id/laravel8/public/api/accountq/login"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(data));
     try {
       final responseBody = json.decode(response.body);
       final isiPegawai = await http.get(
         Uri.parse(
-            "http://127.0.0.1:8000/api/pegawai/nama/${responseBody['username']}"),
+            "http://steirone.my.id/laravel8/public/api/pegawai/nama/${responseBody['username']}"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
       dataPegawai = jsonDecode(isiPegawai.body);
       role = int.parse(responseBody['role']);
+      final panjangcuiii = await http.get(
+        Uri.parse(
+            "http://steirone.my.id/laravel8/public/api/cuti/username/${responseBody['username']}"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      panjangcuti = jsonDecode(panjangcuiii.body);
+      panjangcuti = panjangcuti.length;
       dataLogin = responseBody;
       print(dataLogin);
       print(dataPegawai);

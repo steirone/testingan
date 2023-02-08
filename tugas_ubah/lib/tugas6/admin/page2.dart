@@ -98,121 +98,140 @@ class _PageKe2State extends State<PageKe2> {
                                           SizedBox(
                                             height: 10,
                                           ),
-                                          ElevatedButton(
-                                              onPressed: () {
-                                                _textController1.text =
-                                                    data['nama'];
-                                                _textController2.text = data[
-                                                    'tempat_tanggal_lahir'];
-                                                _textController3.text =
-                                                    data['alamat'];
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return AlertDialog(
-                                                      title:
-                                                          Text('Update Items'),
-                                                      content:
-                                                          SingleChildScrollView(
-                                                        child: Form(
-                                                          key: _formKey,
-                                                          child: Column(
-                                                            children: <Widget>[
-                                                              TextFormField(
-                                                                controller:
-                                                                    _textController1,
-                                                                decoration: InputDecoration(
-                                                                    label: Text(
-                                                                        "Nama Lengkap")),
-                                                                validator:
-                                                                    (value) {
-                                                                  if (value ==
-                                                                          null ||
-                                                                      value
-                                                                          .isEmpty) {
-                                                                    return 'Please enter some text';
-                                                                  }
-                                                                  return null;
-                                                                },
-                                                              ),
-                                                              TextFormField(
-                                                                controller:
-                                                                    _textController2,
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  label: Text(
-                                                                      "Tempat Dan Tanggal Lahir"),
-                                                                ),
-                                                                validator:
-                                                                    (value) {
-                                                                  if (value ==
-                                                                          null ||
-                                                                      value
-                                                                          .isEmpty) {
-                                                                    return 'Please enter some text';
-                                                                  }
-                                                                  return null;
-                                                                },
-                                                              ),
-                                                              TextFormField(
-                                                                controller:
-                                                                    _textController3,
-                                                                keyboardType:
-                                                                    TextInputType
-                                                                        .number,
-                                                                decoration: InputDecoration(
-                                                                    label: Text(
-                                                                        "Alamat")),
-                                                                validator:
-                                                                    (value) {
-                                                                  if (value ==
-                                                                          null ||
-                                                                      value
-                                                                          .isEmpty) {
-                                                                    return 'Please enter some number';
-                                                                  }
-                                                                  return null;
-                                                                },
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              ElevatedButton(
+                                                  onPressed: () {
+                                                    _textController1.text =
+                                                        data['nama'];
+                                                    _textController2.text = data[
+                                                        'tempat_tanggal_lahir'];
+                                                    _textController3.text =
+                                                        data['alamat'];
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Update Items'),
+                                                          content:
+                                                              SingleChildScrollView(
+                                                            child: Form(
+                                                              key: _formKey,
+                                                              child: Column(
+                                                                children: <
+                                                                    Widget>[
+                                                                  TextFormField(
+                                                                    controller:
+                                                                        _textController1,
+                                                                    decoration:
+                                                                        InputDecoration(
+                                                                            label:
+                                                                                Text("Nama Lengkap")),
+                                                                    validator:
+                                                                        (value) {
+                                                                      if (value ==
+                                                                              null ||
+                                                                          value
+                                                                              .isEmpty) {
+                                                                        return 'Please enter some text';
+                                                                      }
+                                                                      return null;
+                                                                    },
+                                                                  ),
+                                                                  TextFormField(
+                                                                    controller:
+                                                                        _textController2,
+                                                                    decoration:
+                                                                        InputDecoration(
+                                                                      label: Text(
+                                                                          "Tempat Dan Tanggal Lahir"),
+                                                                    ),
+                                                                    validator:
+                                                                        (value) {
+                                                                      if (value ==
+                                                                              null ||
+                                                                          value
+                                                                              .isEmpty) {
+                                                                        return 'Please enter some text';
+                                                                      }
+                                                                      return null;
+                                                                    },
+                                                                  ),
+                                                                  TextFormField(
+                                                                    controller:
+                                                                        _textController3,
+                                                                    keyboardType:
+                                                                        TextInputType
+                                                                            .number,
+                                                                    decoration:
+                                                                        InputDecoration(
+                                                                            label:
+                                                                                Text("Alamat")),
+                                                                    validator:
+                                                                        (value) {
+                                                                      if (value ==
+                                                                              null ||
+                                                                          value
+                                                                              .isEmpty) {
+                                                                        return 'Please enter some number';
+                                                                      }
+                                                                      return null;
+                                                                    },
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
                                                                             .all(
                                                                         13.0),
-                                                                child:
-                                                                    ElevatedButton(
-                                                                  child: Text(
-                                                                      'Submit'),
-                                                                  onPressed: (dataLogin[
-                                                                              'username'] ==
-                                                                          data[
-                                                                              'username'])
-                                                                      ? null
-                                                                      : () async {
-                                                                          if (_formKey
-                                                                              .currentState!
-                                                                              .validate()) {
-                                                                            await updateDataPegawais(data['id'], {
-                                                                              "nama": _textController1.text,
-                                                                              "tempat_tanggal_lahir": _textController2.text,
-                                                                              "alamat": _textController3.text,
-                                                                              "username": data['username']
-                                                                            });
-                                                                            setState(() {});
-                                                                            Navigator.of(context).pop();
-                                                                          }
-                                                                        },
-                                                                ),
+                                                                    child:
+                                                                        ElevatedButton(
+                                                                      child: Text(
+                                                                          'Submit'),
+                                                                      onPressed: (dataLogin['username'] ==
+                                                                              data['username'])
+                                                                          ? null
+                                                                          : () async {
+                                                                              if (_formKey.currentState!.validate()) {
+                                                                                await updateDataPegawais(data['id'], {
+                                                                                  "nama": _textController1.text,
+                                                                                  "tempat_tanggal_lahir": _textController2.text,
+                                                                                  "alamat": _textController3.text,
+                                                                                  "username": data['username']
+                                                                                });
+                                                                                setState(() {});
+                                                                                Navigator.of(context).pop();
+                                                                              }
+                                                                            },
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ),
+                                                        );
+                                                      },
                                                     );
                                                   },
-                                                );
-                                              },
-                                              child: Text("Update Data"))
+                                                  child: Text("Update Data")),
+                                              ElevatedButton(
+                                                onPressed:
+                                                    (dataLogin['username'] ==
+                                                            data['username'])
+                                                        ? null
+                                                        : () async {
+                                                            await deleteDataPegawaian(
+                                                                data['id']);
+                                                            setState(() {});
+                                                          },
+                                                child: Text("Delete Data"),
+                                                style: ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        Colors.red),
+                                              )
+                                            ],
+                                          )
                                         ],
                                       ),
                                     ))

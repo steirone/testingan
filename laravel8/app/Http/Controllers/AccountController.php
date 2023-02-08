@@ -84,10 +84,12 @@ class AccountController extends Controller
         return 204;
     }
 
-    public function updaterole($id)
+    public function updaterole($id, Request $request)
     {
         $account = Account::find($id);
-        $account->delete();
+        $account->update([
+            'role' => $request->input('role'),
+        ]);
         return 204;
     }
 }

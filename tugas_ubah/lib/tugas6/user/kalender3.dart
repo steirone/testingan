@@ -471,28 +471,32 @@ class _CalendarState extends State<Calendar> {
                                     width: MediaQuery.of(context).size.width,
                                     height: 50,
                                     child: ElevatedButton(
-                                        onPressed: () async {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return Center(
-                                                  child:
-                                                      CircularProgressIndicator());
-                                            },
-                                          );
-                                          await postDataCuti({
-                                            "tanggal_perizinan": add1.text,
-                                            "rincian": add2.text,
-                                            "alasan": selectedValue,
-                                            "nama": dataPegawai['nama'],
-                                            "username": dataLogin['username']
-                                          });
-                                          _pageview.jumpToPage(2);
-                                          Navigator.pop(context);
-                                          add1.clear();
-                                          add2.clear();
-                                          setState(() {});
-                                        },
+                                        onPressed: (panjangcuti >= 12)
+                                            ? null
+                                            : () async {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Center(
+                                                        child:
+                                                            CircularProgressIndicator());
+                                                  },
+                                                );
+                                                await postDataCuti({
+                                                  "tanggal_perizinan":
+                                                      add1.text,
+                                                  "rincian": add2.text,
+                                                  "alasan": selectedValue,
+                                                  "nama": dataPegawai['nama'],
+                                                  "username":
+                                                      dataLogin['username']
+                                                });
+                                                _pageview.jumpToPage(2);
+                                                Navigator.pop(context);
+                                                add1.clear();
+                                                add2.clear();
+                                                setState(() {});
+                                              },
                                         child: Text("Ajukan")),
                                   ),
                                 ),
