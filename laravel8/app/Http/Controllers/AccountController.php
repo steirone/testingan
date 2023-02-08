@@ -90,6 +90,6 @@ class AccountController extends Controller
         $account->update([
             'role' => $request->input('role'),
         ]);
-        return 204;
+        return 201;
     }
 }
