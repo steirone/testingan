@@ -221,10 +221,7 @@ class _PageKe1State extends State<PageKe1> {
                                                                             ? null
                                                                             : () async {
                                                                                 if (_formKey.currentState!.validate()) {
-                                                                                  await updateDataAkun(data['id'], {
-                                                                                    "username": _textController1.text,
-                                                                                    "email": _textController2.text,
-                                                                                    "password": "member",
+                                                                                  await updateDataAkunih(data['id'], {
                                                                                     "role": selectedValue
                                                                                   });
                                                                                   if (statuscodeAkun == 200) {

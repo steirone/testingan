@@ -126,6 +126,19 @@ Future<http.Response> updateDataAkun(int id, Map<String, String> data) async {
   return response;
 }
 
+Future<http.Response> updateDataAkunih(int id, Map<String, String> data) async {
+  final response = await http.put(
+      Uri.parse("http://steirone.my.id/laravel8/public/api/accountq/role/${id}"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data));
+  statuscodeAkun = response.statusCode;
+  print(statuscodeAkun);
+  print(response.body);
+  return response;
+}
+
 late int statuscodeAkun;
 
 Future<http.Response> getDataAkun(id) async {

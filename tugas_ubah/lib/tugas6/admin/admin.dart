@@ -24,7 +24,7 @@ class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(183, 243, 243, 243),
+      // backgroundColor: Color.fromARGB(183, 243, 243, 243),
       appBar: AppBar(
         title: Text('Data Perusahan'),
         backgroundColor: Colors.black,
